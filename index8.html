@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Json JavaScript Course</title>
+</head>
+<body>
+    <button id='addButton'> Get User</button>
+  <div id="output"></div>
+
+  <script>
+    const addButton = document.getElementById('addButton').addEventListener('click', addJSON);
+    const output = document.querySelector('#output');
+
+
+    function addJSON() {
+      const url ="https://randomuser.me/api/?result=1";
+
+      fetch(url).then(function(response) {
+        return response.json()
+      }).then(function(data) {
+        let people = data.results;
+
+        output.innerHTML = "FirstName: " + people[0].name.first + "<br>" + "LastName: " + people[0].name.last;
+      })
+    }
+</script>
+</body>
+</html>

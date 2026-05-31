@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Json JavaScript Course</title>
+</head>
+<body>
+    <button id='addButton'> Get User</button>
+    <button id='testButton'> Test map</button>
+    <div id="output"></div>
+
+  <script>
+    const addButton = document.getElementById('addButton').addEventListener('click', addJSON);
+    const testButton = document.getElementById('testButton').addEventListener('click', tester);
+    const output = document.querySelector('#output');
+
+    // function tester() {
+    //   let tempArray = [4,5,6,7,9,122];
+    //   // This will return a new array with the values of the original array multiplied by 2 and then add 1 to it
+    //   const tempArray2 = tempArray.map(function(val,i) {
+    //     return val * 2 + 1;
+    //   })
+    // }
+    function tester() {
+      let tempArray = [4,5,6,7,9,122];
+      const html = tempArray.map(function(val,i) {
+        return '<li>' + i + ' = ' + (val * 2)+ '</li>';
+      })
+      console.log(html.join(''));
+      output.innerHTML = '<ul>' + html + '</ul>';
+    }
+
+
+
+    function addJSON() {
+      const url ="https://randomuser.me/api/?result=10";
+
+      fetch(url).then(function(response) {
+        return response.json()
+      }).then(function(data) {
+        let people = data.results;
+        console.log(people);
+        
+
+        output.innerHTML = "FirstName: " + people[0].name.first + "<br>" + "LastName: " + people[0].name.last;
+      })
+    }
+</script>
+</body>
+</html>

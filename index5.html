@@ -1,0 +1,37 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Json JavaScript Course</title>
+</head>
+<body>
+    <div id='addButton'> Add to Storage<div>
+    <div id='seeButton'> View Storage<div>
+    First : <input type="text" id="firstName">
+    Last : <input type="text" id="lastName">
+  <script>
+    document.getElementById('addButton').addEventListener('click', addToStorage);
+    document.getElementById('seeButton').addEventListener('click', viewStorage);
+    const people = JSON.parse(localStorage.getItem('tester')) || {"first": "none", "last": "none"};
+    
+
+    // Storing the object in local storage
+    function addToStorage() {
+      let tempFirst = document.getElementById('firstName').value;
+      let tempLast = document.getElementById('lastName').value;
+      let myObj = {
+        "first": tempFirst,
+        "last": tempLast
+      };
+      localStorage.setItem('tester1', JSON.stringify(myObj));
+      console.log('added');
+      
+    }
+    // Retrieving the object from local storage and parsing it back to an object
+    function viewStorage() {
+      let tempHolder = JSON.parse(localStorage.getItem('tester1')) || people
+      console.log(tempHolder);
+    }
+  </script>
+</body>
+</html>

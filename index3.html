@@ -1,0 +1,25 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON Javascript Course</title>
+</head>
+<body>
+  <script>
+    var myJson = {
+      first: "Basit",
+      last: "Bailey"
+    };
+    // Stringify: Convert a JavaScript object into a JSON string.
+    var myJsonStringified = JSON.stringify(myJson);
+    //  Parse: Convert a JSON string into a JavaScript object.
+    var myJsonParsed = JSON.parse(myJsonStringified);
+    myJsonParsed.first = "John";
+    console.log(myJsonParsed);
+    
+    var sendData = JSON.stringify(myJsonParsed);
+    console.log(sendData);
+
+  </script>
+</body>
+</html>

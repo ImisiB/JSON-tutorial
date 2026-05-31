@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Json JavaScript Course</title>
+</head>
+<body>
+    <button id='addButton'> Get JSON</button>
+  <div id="output"></div>
+
+  <script>
+    const addButton = document.getElementById('addButton').addEventListener('click', addJSON);
+    const output = document.querySelector('#output');
+
+    function addJSON() {
+      console.log('Clicked');
+      output.innerHTML = 'WORKING';
+      const url ="https://api.myjson.online/v1/records/9a0460a1-3335-4d9e-a0f6-7dcd5170f060";
+      fetch(url)
+      .then(function(response) {
+        return response.json()
+      })
+      .then(function(data) {
+        console.log(data);
+        // console.log(JSON.parse(data));
+      })
+    }
+</script>
+</body>
+</html>

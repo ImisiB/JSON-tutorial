@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Json JavaScript Course</title>
+</head>
+<body>
+    <div id='addButton'> Add to Storage<div>
+    <div id='seeButton'> View Storage<div>
+    First : <input type="text" id="firstName">
+    Last : <input type="text" id="lastName">
+  <script>
+    document.getElementById('addButton').addEventListener('click', addToStorage);
+    document.getElementById('seeButton').addEventListener('click', viewStorage);
+    function addToStorage() {
+      let tempFirst = document.getElementById('firstName').value;
+      let tempLast = document.getElementById('lastName').value;
+      let myObj = {
+        first: tempFirst,
+        last: tempLast
+      };
+      JSON.stringify(myObj);
+      console.log(myObj);
+
+      localStorage.setItem('tester', JSON.stringify(myObj));
+      console.log(JSON.stringify(myObj));
+    }
+    function viewStorage() {
+      let tempHolder = localStorage.getItem('tester');
+      tempHolder = JSON.parse(tempHolder);
+      console.log(tempHolder);
+    }
+
+    var myJson = {
+      first: "Basit",
+      last: "Bailey"
+    };
+
+    // Stringify: Convert a JavaScript object into a JSON string.
+    var myJsonStringified = JSON.stringify(myJson);
+    
+    //  Parse: Convert a JSON string into a JavaScript object.
+    var myJsonParsed = JSON.parse(myJsonStringified);
+    myJsonParsed.first = "Basit";
+    console.log(myJsonParsed);
+    
+    var sendData = JSON.stringify(myJsonParsed);
+    console.log(sendData);
+
+  </script>
+</body>
+</html>
