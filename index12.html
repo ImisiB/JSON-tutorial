@@ -32,21 +32,28 @@
 
     function addJSON() {
       const url ="https://randomuser.me/api/?results=50";
-
+      output.innerHTML = '';
       fetch(url).then(function(response) {
         return response.json()
       }).then(function(data) {
         let people = data.results;
         console.log(people);
-      const html = people.map(function(val,i) {
+      return people.map(function(val,i) {
+        let div = document.createElement('div');
+        let img = document.createElement('img');
+        let span = document.createElement('span');
         let firstName = val.name.first.capitalize();
         let lastName = val.name.last.capitalize();
-        console.log(val);
-        return '<li>' + (i + 1) + '. ' + firstName + ' ' + lastName + '</li>';
+        img.src = val.picture.thumbnail;
+        span.innerHTML = (i + 1) + '. ' + firstName + ' ' + lastName;
+        div.appendChild(span);
+        div.appendChild(img);
+        output.appendChild(div);
       })
-      output.innerHTML = '<ul>' + html.join("") + '</ul>';
-    
-    })
+
+    }).catch(function(error) {
+      console.log(error);
+    });
     }
 </script>
 </body>
